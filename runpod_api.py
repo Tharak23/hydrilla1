@@ -61,7 +61,7 @@ def load_models():
     print("🔄 Loading models for serverless API...")
     
     # Set environment for custom rasterizer
-    os.environ['LD_LIBRARY_PATH'] = '/usr/local/lib/python3.12/dist-packages/torch/lib:' + os.environ.get('LD_LIBRARY_PATH', '')
+    os.environ['LD_LIBRARY_PATH'] = '/usr/local/lib/python3.10/dist-packages/torch/lib:' + os.environ.get('LD_LIBRARY_PATH', '')
     
     # Load shape generation model
     print("📦 Loading shape generation model...")
