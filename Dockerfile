@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python dependencies
 RUN pip install --upgrade pip
-RUN pip install runpod torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+RUN pip install runpod
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip install diffusers transformers accelerate safetensors
 RUN pip install pillow numpy trimesh rembg
 RUN pip install huggingface-hub
