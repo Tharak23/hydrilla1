@@ -1,0 +1,28 @@
+{
+  "name": "hunyuan3d-serverless",
+  "description": "Hunyuan3D Serverless API for Image-to-3D and Text-to-3D Generation",
+  "version": "1.0.0",
+  "main": "runpod_api.py",
+  "dependencies": {
+    "runpod": "^1.0.0",
+    "torch": "^2.8.0",
+    "diffusers": "^0.35.2",
+    "transformers": "^4.57.1",
+    "pillow": "^10.0.0",
+    "numpy": "^1.24.0",
+    "trimesh": "^4.0.0",
+    "rembg": "^2.0.0"
+  },
+  "runpod": {
+    "handler": "runpod_api.handler",
+    "timeout": 300,
+    "memory": 24576,
+    "gpu": "RTX 4090",
+    "container_disk": 50,
+    "volume_mount": "/workspace",
+    "env": {
+      "LD_LIBRARY_PATH": "/usr/local/lib/python3.12/dist-packages/torch/lib:$LD_LIBRARY_PATH",
+      "CUDA_VISIBLE_DEVICES": "0"
+    }
+  }
+}
