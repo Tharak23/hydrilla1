@@ -23,7 +23,7 @@ RUN pip install --upgrade pip
 RUN pip install runpod
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip install diffusers transformers accelerate safetensors
-RUN pip install pillow numpy trimesh rembg
+RUN pip install pillow "numpy<2.0" trimesh rembg onnxruntime
 RUN pip install huggingface-hub
 
 # Clone Hunyuan3D repository
