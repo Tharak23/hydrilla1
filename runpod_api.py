@@ -178,15 +178,24 @@ def generate_texture(mesh, image, progress_callback=None):
         if progress_callback:
             progress_callback("Generating texture...", 60)
         
-        textured_mesh = texture_pipeline(mesh, image=image)
-        
-        if progress_callback:
-            progress_callback("Texture generated", 90)
-        
-        return textured_mesh, None
+        # Try texture generation - if it fails, return shape-only model
+        try:
+            textured_mesh = texture_pipeline(mesh, image=image)
+            if progress_callback:
+                progress_callback("Texture generated", 90)
+            return textured_mesh, None
+        except Exception as texture_error:
+            # If texture generation fails (e.g., missing custom_rasterizer), return shape-only
+            print(f"⚠️ Texture generation failed: {texture_error}")
+            print("Returning shape-only model (no texture)")
+            if progress_callback:
+                progress_callback("Using shape-only model (texture unavailable)", 90)
+            return mesh, None
         
     except Exception as e:
-        return None, f"Texture generation error: {str(e)}"
+        # Fallback to shape-only if texture completely fails
+        print(f"⚠️ Texture pipeline error: {e}")
+        return mesh, None
 
 def save_model(mesh, filename, progress_callback=None):
     """Save 3D model to file"""
