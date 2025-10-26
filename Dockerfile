@@ -19,11 +19,11 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python dependencies
 RUN pip install --upgrade pip
-RUN pip install runpod
+RUN pip install runpod || pip install --index-url https://pypi.org/simple runpod
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-RUN pip install diffusers transformers accelerate safetensors
-RUN pip install pillow numpy trimesh rembg
-RUN pip install huggingface-hub
+RUN pip install --index-url https://pypi.org/simple diffusers transformers accelerate safetensors
+RUN pip install --index-url https://pypi.org/simple pillow numpy trimesh rembg
+RUN pip install --index-url https://pypi.org/simple huggingface-hub
 
 # Clone Hunyuan3D repository
 RUN git clone https://github.com/Tencent/Hunyuan3D-2.git
