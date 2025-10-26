@@ -55,11 +55,11 @@ RUN mkdir -p /tmp/outputs
 
 # Copy API files
 WORKDIR /workspace
-COPY runpod_api.py .
+COPY handler.py .
 COPY package.json .
 
 # Expose port (if needed for debugging)
 EXPOSE 8000
 
 # Set default command
-CMD ["python", "runpod_api.py"]
+CMD ["python", "handler.py"]

@@ -1,8 +1,8 @@
 {
   "name": "hunyuan3d-serverless",
-  "description": "Hunyuan3D Serverless API for Image-to-3D and Text-to-3D Generation",
+  "description": "Hunyuan3D Serverless API for Image-to-3D and Text-to-3D Generation - Ultra High Quality",
   "version": "1.0.0",
-  "main": "runpod_api.py",
+  "main": "handler.py",
   "dependencies": {
     "runpod": "^1.0.0",
     "torch": "^2.8.0",
@@ -14,7 +14,7 @@
     "rembg": "^2.0.0"
   },
   "runpod": {
-    "handler": "runpod_api.handler",
+    "handler": "handler.handler",
     "timeout": 300,
     "memory": 24576,
     "gpu": "RTX 4090",
